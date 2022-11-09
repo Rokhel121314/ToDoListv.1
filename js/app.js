@@ -6,6 +6,7 @@ addToDoBtn.addEventListener("click", addToDo);
 
 function addToDo() {
     let toDo = document.querySelector("#toDo").value;
+    let inputReset = document.querySelector("#formReset");
 
     let todoList = document.querySelector("#todoList");
     let listItem = document.createElement("li");
@@ -15,6 +16,9 @@ function addToDo() {
     listInput.setAttribute("disabled", "");
     listInput.value = toDo;
     listInput.defaultValue = toDo;
+    inputReset.reset();
+    
+    
 
     //remove button
     let removeToDO = document.createElement("button");
