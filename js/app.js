@@ -17,14 +17,15 @@ function addToDo() {
     listInput.defaultValue = toDo;
 
     //remove button
-    let removeToDO = document.createElement("span");
+    let removeToDO = document.createElement("button");
     removeToDO.innerHTML = "<span class='material-symbols-outlined delete'>cancel</span>";
-
+    removeToDO.type = "button";
+    removeToDO.classList = "remBtn";
 
     removeToDO.addEventListener("click", remToDo);
     function remToDo() {
 
-        let text = "Are you sure you want to Delete This toDO"
+        let text = "Delete This toDO?"
 
         if (confirm(text) == true) {
             todoList.removeChild(listItem);
@@ -33,14 +34,14 @@ function addToDo() {
         else {
 
         }
-
-
     }
 
     //edit button
-    let editToDo = document.createElement("span");
+    let editToDo = document.createElement("button");
     editToDo.innerHTML = "<span class='material-symbols-outlined edit'>edit_square</span>";
-    editToDo.type ="input"
+    editToDo.type = "button"
+    editToDo.classList = "editBtn"
+
 
     editToDo.addEventListener("click", editToDos);
 
@@ -49,10 +50,12 @@ function addToDo() {
         editToDo.setAttribute("disabled", "");
 
 
-
         //save button
-        let saveToDo = document.createElement("span");
+        let saveToDo = document.createElement("button");
         saveToDo.innerHTML = "<span class='material-symbols-outlined save'>done</span>";
+        saveToDo.type = "button";
+        saveToDo.classList = "saveBtn";
+
         listItem.appendChild(saveToDo);
 
         saveToDo.addEventListener("click", saveToDos);
@@ -60,7 +63,7 @@ function addToDo() {
         function saveToDos() {
             listItem.removeChild(saveToDo);
 
-            let text = "Save Changes"
+            let text = "Save Changes?"
 
             //get new value
             if (confirm(text) == true) {
@@ -71,17 +74,18 @@ function addToDo() {
                 listInput.setAttribute("disabled", "");
                 editToDo.removeAttribute("disabled", "");
 
-                text = "Saved";
+                text = "Saved!";
             }
             else {
                 
                 editToDo.removeAttribute("disabled", "");
                 listInput.setAttribute("disabled", "");
 
-                text ="Not Saved";
+                text ="Not Saved!";
 
                 listInput.value = listInput.defaultValue;
             }
+
             alert(text);
 
         }
@@ -104,7 +108,7 @@ function addToDo() {
         addToDoBtn.setAttribute("disabled", "");
         break;
         case(todoNum < 5):
-        addToDoBtn.removeAttribute("disabled", "");
+        // addToDoBtn.removeAttribute("disabled", "");
         default:
             
     }
